@@ -60,3 +60,39 @@ for i, word in enumerate(words_list):
     
 print dict
 
+
+# ## 05. n-gram
+
+# In[ ]:
+
+# 単語n-gramなのか文字n-gramなのか用
+(
+    TYPE_WORD,
+    TYPE_CHAR
+) = range(0, 2)
+
+#
+# ngramを切り出す関数
+# @param input 入力文(ピリオドやコンマを含まない)
+# @param n n-gram
+# @param type 単語n-gramなのか文字n-gramなのか
+# @return ngram_list n-gramのリスト
+#
+def ngram(input, n, type):
+    if TYPE_WORD == type:
+         input = input.split()
+            
+    last = len(input) - n + 1
+    ngram_list = [input[i] + "-" + input[i+1] for i in range(0, last)] # ハイフンでつなげる
+    return ngram_list
+    
+str = "I am an NLPer"
+print ngram(str, 2, TYPE_WORD)
+print ngram(str, 2, TYPE_CHAR)
+
+
+
+# In[ ]:
+
+
+
