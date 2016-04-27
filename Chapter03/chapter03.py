@@ -22,7 +22,7 @@ def get_article(title):
     with gzip.open(filepath, "r") as f:
         article_json = f.readline()
         while article_json:
-            article_dict = json.loads(article_json)
+            article_dict = json.loads(article_json.decode('utf-8'))
             if article_dict["title"] == title:
                 return article_dict["text"]
             article_json = f.readline()
